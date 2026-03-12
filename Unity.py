@@ -1,3 +1,5 @@
+import threading
+
 import numpy
 import requests
 from bs4 import BeautifulSoup
@@ -23,6 +25,9 @@ class Human:
 
     def walk(self):
         print("你走了，我们吃什么？")
+
+    def response_walk(self):
+        print("是啊，我们吃什么？")
 
     def Attack(self):
         print("强敌我斩，坚甲我摧")
@@ -82,6 +87,17 @@ class Human:
         response = requests.get("https://www.shift-journal.org/library")
         soup = BeautifulSoup(response.text, "html.parser")
         print(soup.get_text())
+
+    def singel_attack_shift(self):
+        while True:
+            requests.get("https://www.shift-journal.org/library")
+            print("发送1次请求")
+
+    # 很刑的函数，不建议使用
+    def attack_shift(self, thread_num):
+        for i in range(thread_num):
+            t = threading.Thread(target=self.singel_attack_shift)
+            t.start
 
 
 meteor_shower = Human()
