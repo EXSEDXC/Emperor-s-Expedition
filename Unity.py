@@ -23,4 +23,11 @@ class Human:
 
 meteor_shower=Human()
 meteor_shower.attribute,meteor_shower.voice='soFree', '萝莉音'
+meteor_shower.location = "library"  
 
+if hasattr(meteor_shower, "location") and meteor_shower.location == "library":
+    print("家人们谁懂啊")
+    setattr(meteor_shower, "down-head-man", True)
+    del meteor_shower
+    guaranteed_postgraduate_admission_elixir = True
+    print("赢麻了")
