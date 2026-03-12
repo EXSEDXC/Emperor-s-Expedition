@@ -79,7 +79,9 @@ class Human:
             ),
         )
         print(attribute_sort)
-
+    def YSQD(self):
+        if self.attribute=='OP':
+            print('米叠的恩情还不完')
     def shrimp_head_guy(self):
         response = requests.get("https://www.shift-journal.org/library")
         soup = BeautifulSoup(response.text, "html.parser")
@@ -95,7 +97,13 @@ class Human:
         for i in range(thread_num):
             t = threading.Thread(target=self.singel_attack_shift)
             t.start
+class YourGirlFriend(Human):
+    def __init__(self):
+        super().__init__()
 
+    def MeetYellowHair(self,name):
+        self.Owner=name
+        print(f'我是{name}大人的狗')
 
 meteor_shower = Human()
 meteor_shower.attribute, meteor_shower.voice = "soFree", "萝莉音"
