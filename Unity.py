@@ -26,9 +26,6 @@ class Human:
     def walk(self):
         print("你走了，我们吃什么？")
 
-    def response_walk(self):
-        print("是啊，我们吃什么？")
-
     def Attack(self):
         print("强敌我斩，坚甲我摧")
 
