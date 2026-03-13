@@ -1,5 +1,5 @@
 import threading
-
+import numpy as np
 import itchat
 import numpy
 import requests
@@ -7,7 +7,8 @@ from bs4 import BeautifulSoup
 
 
 class Human:
-    def __init__(self):
+    def __init__(self,name):
+        self.name=name
         self.voice = []
         attribute = [
             "soFree",
@@ -26,7 +27,8 @@ class Human:
 
     def walk(self):
         print("你走了，我们吃什么？")
-
+    def __repr__(self):
+        return self.name
     def Attack(self):
         print("强敌我斩，坚甲我摧")
 
@@ -100,20 +102,27 @@ class Human:
         for i in range(thread_num):
             t = threading.Thread(target=self.singel_attack_shift)
             t.start
+    def make(self):
+        self.Attack()
+        self.walk()
 
 
 class YourGirlFriend(Human):
-    def __init__(self):
-        super().__init__()
+    def __init__(self,name="你的女友"):
+        super().__init__(name)
 
     def MeetYellowHair(self, name):
         self.Owner = name
         print(f"我是{name}大人的狗")
 
-
-class d1_308:
+class dormitory:
     def __init__(self):
+        pass
+class d1_308(dormitory):
+    def __init__(self):
+        super().__init__()
         self.people = []
+        self.vistors=[]
         self.activity = ""
         self.sentences = [
             "对面纯轮椅",
@@ -127,14 +136,21 @@ class d1_308:
             "烫烫烫",
             "锟斤拷",
         ]
-
+        a=behave()
+        a.append('MC阻塞器')
+        for i in a:
+            self.people.append(Human(i))
     def talk(self):
         for i in range(100):
             for j in range(len(self.sentences)):
                 print(self.sentences[j])
-
-
-meteor_shower = Human()
+    def vistor(self,person):
+        self.vistors.append(person)
+    def speak(self):
+        behave()
+        for i in range(10*len(self.people)):
+            print(f'{np.random.choice(self.people)}:{np.random.choice(self.people+self.vistors)}{np.random.choice(self.sentences)}')
+meteor_shower = Human("流星雨")
 meteor_shower.attribute, meteor_shower.voice = "soFree", "萝莉音"
 meteor_shower.location = "library"
 
@@ -157,7 +173,7 @@ def behave():
     if c and d:
         print(f"{d}")
         print(f"{c}纯human&chicken")
-
+    return [a,b,c]
 
 if "attack_shift" in dir(meteor_shower) and threading.active_count() > 2:
     itchat.auto_login()
@@ -166,3 +182,5 @@ if "attack_shift" in dir(meteor_shower) and threading.active_count() > 2:
         if "禁水群" in room["NickName"]:
             room.send("我爱gx")
             break
+A=d1_308()
+A.speak()
