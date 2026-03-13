@@ -1,8 +1,8 @@
 import threading
 import numpy as np
-# import itchat
-# import requests
-# from bs4 import BeautifulSoup
+import itchat
+import requests
+from bs4 import BeautifulSoup
 
 
 class Human:
