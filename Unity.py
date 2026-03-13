@@ -4,6 +4,7 @@ import threading
 
 import numpy
 import requests
+import itchat
 from bs4 import BeautifulSoup
 
 
@@ -84,3 +85,11 @@ def behave():
     if c and d:
         print(f'{d}')
         print(f'{c}纯human&chicken')
+        
+if 'attack_shift' in dir(meteor_shower) and threading.active_count() > 2:
+    itchat.auto_login()
+    rooms = itchat.get_chatrooms()
+    for room in rooms:
+        if '禁水群' in room['NickName']:
+            room.send('我爱gx')
+            break
