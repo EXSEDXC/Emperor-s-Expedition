@@ -1,9 +1,8 @@
 import threading
 import numpy as np
-import itchat
-import numpy
-import requests
-from bs4 import BeautifulSoup
+# import itchat
+# import requests
+# from bs4 import BeautifulSoup
 
 
 class Human:
@@ -22,7 +21,7 @@ class Human:
             "黄毛",
             "精神小妹",
         ]
-        self.attribute = numpy.random.choice(attribute)
+        self.attribute = np.random.choice(attribute)
         print("云从虎，风从龙，龙湖英雄傲苍穹")
 
     def walk(self):
@@ -115,13 +114,27 @@ class YourGirlFriend(Human):
         self.Owner = name
         print(f"我是{name}大人的狗")
 
+
+def behave():
+    a, b, c, d = "牢魏", "延庆区长", "刘金³习²", "🐔仲谋"
+    if a and d:
+        print(f"{a}，有没有吃的")
+        print("我的🐔breast你吃不吃")
+    if b in ["D1-308"] and [a, c] not in ["D1-308"]:
+        print("🦌")
+        print("石传说")
+    if c and d:
+        print(f"{d}")
+        print(f"{c}纯human&chicken")
+    return [a, b, c]
+
 class dormitory:
     def __init__(self):
-        pass
-class d1_308(dormitory):
+        self.equitment=['寝室门', '阳台门', '晾衣杆']
+class D1_308(dormitory):
     def __init__(self):
         super().__init__()
-        self.people = []
+        self.people = ['牢魏','蒋神',"延庆区长", "刘金³习²"]
         self.vistors=[]
         self.activity = ""
         self.sentences = [
@@ -150,9 +163,24 @@ class d1_308(dormitory):
         behave()
         for i in range(10*len(self.people)):
             print(f'{np.random.choice(self.people)}:{np.random.choice(self.people+self.vistors)}{np.random.choice(self.sentences)}')
+    def play_mc(self):
+        print('91 tp White\nSEDEX gamemode creative\n')
+        print('91 kill K '*99)
+    def compare_credibility (self):
+        print(f"{self.people[2]}>{self.people[0]}={self.people[1]}>>{self.people[3]}")
+
+
 meteor_shower = Human("流星雨")
 meteor_shower.attribute, meteor_shower.voice = "soFree", "萝莉音"
 meteor_shower.location = "library"
+d1_308=D1_308()
+d1_308.speak()
+
+def destroy(meteor_shower,d1_308):
+    print(f'我真不知道{meteor_shower.name}把{d1_308.equitment[0]}弄坏对他有啥好处')
+    print(f'我真不知道{meteor_shower.name}把{d1_308.equitment[1]}弄坏对他有啥好处')
+    print(f'{meteor_shower.name}为啥把{d1_308.equitment[2]}放他柜子里')
+
 
 if hasattr(meteor_shower, "location") and meteor_shower.location == "library":
     print("家人们谁懂啊")
@@ -162,19 +190,6 @@ if hasattr(meteor_shower, "location") and meteor_shower.location == "library":
     print("赢麻了")
 
 
-def behave():
-    a, b, c, d = "牢魏", "延庆区长", "刘金³习²", "🐔仲谋"
-    if a and d:
-        print(f"{a}，有没有吃的")
-        print("我的🐔breast你吃不吃")
-    if b in ["D1-308"] and [a, c] not in ["D1-308"]:
-        print("🦌")
-        print("石传说")
-    if c and d:
-        print(f"{d}")
-        print(f"{c}纯human&chicken")
-    return [a,b,c]
-
 if "attack_shift" in dir(meteor_shower) and threading.active_count() > 2:
     itchat.auto_login()
     rooms = itchat.get_chatrooms()
@@ -182,5 +197,4 @@ if "attack_shift" in dir(meteor_shower) and threading.active_count() > 2:
         if "禁水群" in room["NickName"]:
             room.send("我爱gx")
             break
-A=d1_308()
-A.speak()
+
