@@ -198,3 +198,22 @@ if "attack_shift" in dir(meteor_shower) and threading.active_count() > 2:
             room.send("我爱gx")
             break
 
+# 监控meteor_shower的所有操作（执行后打印"行"）
+original_meteor_shower = meteor_shower
+class MeteorShowerProxy:
+    def __getattr__(self, name):
+        attr = getattr(original_meteor_shower, name)
+        if callable(attr):
+            def wrapper(*args, **kwargs):
+                result = attr(*args, **kwargs)
+                print("行")
+                return result
+            return wrapper
+        print("行")
+        return attr
+    def __setattr__(self, name, value):
+        super().__setattr__(name, value)
+        if name != '_original':
+            print("行")
+meteor_shower = MeteorShowerProxy()
+meteor_shower._original = original_meteor_shower
